@@ -28,7 +28,7 @@ export const results = [
   },
   {
     programId: "P004",
-    programName: "Song Arabic",
+    programName: "Song Malayalam",
     placements: [
       { position: 1, grade: "A", studentId: "548", category: "Thanawiyyah" },
       { position: 2, grade: "A", studentId: "544", category: "Thanawiyyah" },
