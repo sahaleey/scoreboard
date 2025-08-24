@@ -9,6 +9,8 @@ import {
   Sparkles,
   ChevronLeft,
   ChevronRight,
+  Hash,
+  Users,
   Star,
 } from "lucide-react";
 
@@ -36,13 +38,13 @@ const initials = (name = "") =>
 const getPositionIcon = (position) => {
   switch (position) {
     case 1:
-      return <Crown className="h-4 w-4 text-amber-500" />;
+      return <Crown className="h-4 w-4 text-amber-600" />;
     case 2:
-      return <Trophy className="h-4 w-4 text-blue-500" />;
+      return <Trophy className="h-4 w-4 text-blue-600" />;
     case 3:
-      return <Award className="h-4 w-4 text-rose-500" />;
+      return <Award className="h-4 w-4 text-rose-600" />;
     default:
-      return <Sparkles className="h-4 w-4 text-purple-500" />;
+      return <Sparkles className="h-4 w-4 text-purple-600" />;
   }
 };
 
@@ -137,7 +139,7 @@ export default function AllRoundToppers() {
         <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-slate-100 mb-4">
           <Star className="h-8 w-8 text-slate-400" />
         </div>
-        <h3 className="text-xl      font-bold text-slate-700 mb-2">
+        <h3 className="text-xl  font-bold text-slate-700 mb-2">
           All-Round Toppers
         </h3>
         <p className="text-slate-500">No topper data available yet.</p>
@@ -153,7 +155,7 @@ export default function AllRoundToppers() {
       className="bg-white rounded-2xl shadow-xs p-6 border border-slate-100/70"
     >
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-2xl      font-bold text-slate-800 flex items-center gap-2">
+        <h3 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
           <Trophy className="h-6 w-6 text-amber-500" /> All-Round Toppers
         </h3>
         <span className="text-xs font-medium bg-slate-100 text-slate-600 px-3 py-1 rounded-full">
@@ -177,52 +179,127 @@ export default function AllRoundToppers() {
               <motion.div
                 key={topper.studentId}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-slate-50 rounded-xl p-4 border border-slate-100 shadow-xs hover:shadow-sm transition-all"
+                className={`
+          bg-slate-50 rounded-xl p-4 border border-slate-100 shadow-xs hover:shadow-sm transition-all
+          ${
+            topper.position === 1
+              ? "sm:col-span-2 bg-gradient-to-r from-amber-200 to-amber-300  lg:row-span-2 lg:col-span-1"
+              : ""
+          }${
+                  topper.position === 2
+                    ? "bg-gradient-to-r from-sky-200 to-sky-300"
+                    : ""
+                }
+          ${
+            topper.position === 3
+              ? "bg-gradient-to-r from-rose-200 to-rose-300"
+              : ""
+          }
+          ${
+            topper.position === 4 || topper.position === 5
+              ? "bg-gradient-to-r from-purple-200 to-purple-300"
+              : ""
+          }
+        `}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white      font-bold text-sm">
-                        {initials(topper.name)}
-                      </div>
-                      <div
-                        className={`absolute -bottom-1 -right-1 h-6 w-6 rounded-full flex items-center justify-center text-xs font-bold bg-gradient-to-r ${getPositionColor(
-                          topper.position
-                        )}`}
-                      >
-                        {topper.position}
-                      </div>
+                {/* Card Content */}
+                <div
+                  className={`flex ${
+                    topper.position === 1
+                      ? "flex-col items-center text-center gap-4"
+                      : "items-start justify-between gap-4"
+                  }`}
+                >
+                  {/* Avatar and Badge */}
+                  <div className="relative">
+                    <div
+                      className={`rounded-full flex items-center justify-center text-white font-bold shadow-lg
+        ${
+          topper.position === 1
+            ? "h-20 w-20 text-xl bg-gradient-to-br from-amber-400 to-amber-600 shadow-amber-200/50"
+            : "h-14 w-14 text-sm bg-gradient-to-br from-blue-500 to-indigo-600 shadow-blue-200/50"
+        }`}
+                    >
+                      {initials(topper.name)}
                     </div>
-                    <div>
-                      <h4 className="     font-semibold text-slate-800 text-sm leading-tight">
-                        {topper.name}
-                      </h4>
-                      <p className="text-xs text-slate-500 mt-1">
+                    <div
+                      className={`absolute -bottom-1 -right-1 rounded-full flex items-center justify-center font-bold border-2 border-white shadow-md
+        ${
+          topper.position === 1
+            ? "h-8 w-8 text-sm text-white bg-gradient-to-br from-amber-500 to-amber-700"
+            : "h-6 w-6 text-xs text-white bg-gradient-to-br from-blue-600 to-indigo-700"
+        }`}
+                    >
+                      {topper.position}
+                    </div>
+                  </div>
+
+                  {/* Student Info */}
+                  <div
+                    className={`flex-1 ${
+                      topper.position === 1 ? "text-center" : ""
+                    }`}
+                  >
+                    <h4
+                      className={`font-semibold text-slate-800 leading-tight ${
+                        topper.position === 1 ? "text-lg mb-1" : "text-sm"
+                      }`}
+                    >
+                      {topper.name}
+                    </h4>
+                    <div
+                      className={`flex ${
+                        topper.position === 1 ? "justify-center" : ""
+                      }`}
+                    >
+                      <p
+                        className={`text-slate-500 inline-flex items-center ${
+                          topper.position === 1
+                            ? "text-xs bg-slate-100 px-2 py-1 rounded-full"
+                            : "text-xs"
+                        }`}
+                      >
                         Ad No: {topper.studentId}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 text-amber-500">
+
+                  {/* Position Icon */}
+                  <div
+                    className={`${
+                      topper.position === 1
+                        ? "text-amber-500 text-3xl mt-2"
+                        : "text-amber-500"
+                    }`}
+                  >
                     {getPositionIcon(topper.position)}
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <span className="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full">
-                    Team {topper.team}
-                  </span>
-                  <span className="text-xs px-2 py-1 bg-purple-50 text-purple-600 rounded-full">
-                    Class {topper.class}
-                  </span>
-                  <span className="text-xs px-2 py-1 bg-emerald-50 text-emerald-600 rounded-full">
-                    {topper.category}
-                  </span>
+                {/* Additional Info */}
+                <div
+                  className={`mt-4 ${
+                    topper.position === 1 ? "text-center" : ""
+                  }`}
+                >
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <span className="text-xs px-2.5 py-1.5 bg-blue-50 text-blue-700 rounded-full flex items-center">
+                      <Users className="h-3 w-3 mr-1" />
+                      Team {topper.team}
+                    </span>
+                    <span className="text-xs px-2.5 py-1.5 bg-purple-50 text-purple-700 rounded-full">
+                      Class {topper.class}
+                    </span>
+                    <span className="text-xs px-2.5 py-1.5 bg-emerald-50 text-emerald-700 rounded-full">
+                      {topper.category}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs text-slate-500">Total Points</p>
-                    <p className="     font-bold text-amber-600 text-lg">
+                    <p className="font-bold text-amber-600 text-lg">
                       {topper.total}
                     </p>
                   </div>

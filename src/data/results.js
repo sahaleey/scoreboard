@@ -5,7 +5,7 @@ export const results = [
     placements: [
       { position: 1, grade: "A", studentId: "523", category: "Thaniyyah" }, // 1st + A = 10
       { position: 2, grade: "B", studentId: "345", category: "Thaniyyah" }, // 2nd + B = 6
-      { position: 3, grade: "C", studentId: "243", category: "Thaniyyah" }, // 3rd + C = 2
+      { position: 3, grade: "B", studentId: "345", category: "Thaniyyah" }, // 3rd + C = 2
     ],
   },
   {
@@ -15,6 +15,7 @@ export const results = [
       { position: 1, grade: "A", studentId: "576", category: "Thaniyyah" },
       { position: 2, grade: "A", studentId: "544", category: "Thaniyyah" },
       { position: 3, grade: "B", studentId: "332", category: "Thaniyyah" },
+      { grade: "B", studentId: "144", category: "Thaniyyah" },
     ],
   },
   {
