@@ -4,22 +4,7 @@ import { results, students } from "../data";
 import { calcScore } from "../utils/calcScores";
 import AllRoundToppers from "./AllRoundToppers";
 
-import {
-  Search,
-  Star,
-  X,
-  Users,
-  BookOpen,
-  Trophy,
-  Hash,
-  BarChart2,
-  Award,
-  Crown,
-  Sparkles,
-  Filter,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { Star, Trophy, BarChart2, Award, Sparkles } from "lucide-react";
 import ResultsSlider from "./ResultsSlider";
 
 const toOrdinal = (n) =>
@@ -84,7 +69,7 @@ export default function Home() {
             <motion.h1
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-5xl      font-bold text-slate-800 mb-2"
+              className="text-4xl md:text-5xl font-bold text-slate-800 mb-2"
             >
               Art Fest{" "}
               <span className="bg-gradient-to-r from-sky-500 to-sky-600 bg-clip-text text-transparent">
@@ -166,11 +151,11 @@ export default function Home() {
                       >
                         {i + 1}
                       </span>
-                      <span className="     font-medium text-slate-700">
+                      <span className=" font-medium text-slate-700">
                         Team {team}
                       </span>
                     </div>
-                    <span className="     font-bold text-emerald-600">
+                    <span className="  font-bold text-emerald-600">
                       {score} pts
                     </span>
                   </motion.li>
@@ -189,17 +174,15 @@ export default function Home() {
                 <div className="p-2 rounded-lg bg-blue-50 text-blue-600 shadow-sm">
                   <BarChart2 className="h-5 w-5" />
                 </div>
-                <h2 className="text-xl      font-bold text-slate-800">
+                <h2 className="text-xl font-bold text-slate-800">
                   Quick Stats
                 </h2>
               </div>
 
               <div className="space-y-4">
                 <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
-                  <span className="text-sm      text-slate-600">
-                    Total Programs
-                  </span>
-                  <span className="     font-bold text-blue-600">
+                  <span className="text-sm text-slate-600">Total Programs</span>
+                  <span className="font-bold text-blue-600">
                     {results.length}
                   </span>
                 </div>
@@ -207,14 +190,12 @@ export default function Home() {
                   <span className="text-sm      text-slate-600">
                     Total Students
                   </span>
-                  <span className="     font-bold text-purple-600">
+                  <span className=" font-bold text-purple-600">
                     {students.length}
                   </span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
-                  <span className="text-sm      text-slate-600">
-                    Total Teams
-                  </span>
+                  <span className="text-sm  text-slate-600">Total Teams</span>
                   <span className="     font-bold text-emerald-600">
                     {sortedTeams.length}
                   </span>

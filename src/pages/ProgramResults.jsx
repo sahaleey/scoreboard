@@ -494,10 +494,7 @@ const ProgramResults = () => {
                                         {p.studentId}
                                       </span>
                                     </div>
-                                    <div className="  text-sm text-slate-700 flex items-center justify-center">
-                                      <Hash className="h-3 w-3 mr-1 text-slate-500" />
-                                      {p.studentId}
-                                    </div>
+
                                     {p.grade ? (
                                       <div className="text-xs   text-amber-600 mt-1 px-2 py-1 bg-white rounded-full inline-block border border-amber-100">
                                         Grade: {p.grade}
